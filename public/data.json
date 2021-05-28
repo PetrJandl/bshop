@@ -1,0 +1,72 @@
+{
+    "items": [
+      {},
+      {
+        "id": 1,
+        "type": "book",
+        "name": "Montessori pro (ne)chápavé : 0-3 roky / Patricia Spinelli, Geneviève Carbone, Marilyne Maugin",
+        "price": 199,
+        "imgUrl": "",
+        "url": "https://kmhk.tritius.cz/detail/2358587",
+        "isbn": "978-80-256-2424-1",
+        "autor": "Geneviève Carbone",
+        "description": ""
+      },
+      {
+        "id": 2,
+        "type": "book",
+        "name": "Montessori pro (ne)chápavé : 3-6 let / Patricia Spinelli, Geneviève Carbone, Marilyne Maugin",
+        "price": 223,
+        "imgUrl": "",
+        "url": "https://kmhk.tritius.cz/detail/2373263",
+        "isbn": "978-80-256-2425-8",
+        "autor": "Geneviève Carbone",
+        "description": ""
+      },
+      {
+        "id": 3,
+        "type": "book",
+        "name": "60 Montessori aktivit pro miminko : jak připravit jeho svět, probouzet jeho zájem a pomáhat mu k samostatnosti",
+        "price": 299,
+        "imgUrl": "",
+        "url": "https://kmhk.tritius.cz/detail/2340971",
+        "isbn": "978-80-256-2125-7",
+        "autor": "Marie-Helene Place",
+        "description": ""
+      },
+      {
+        "id": 4,
+        "type": "book",
+        "name": "Rok plný učení zábavnou formou: 52 týdnů pedagogických aktivit v rodině",
+        "price": 399,
+        "imgUrl": "",
+        "url": "https://kmhk.tritius.cz/detail/2340971",
+        "isbn": "978-80-256-2039-7",
+        "autor": "Elsa Thiriot",
+        "description": ""
+      },
+
+      {
+        "id": 103,
+        "type": "tool",
+        "name": "Nášlapné kameny",
+        "price": 1200,
+        "imgUrl": "/img/tools/NaslapneKameny.jpg",
+        "url": "https://1url.cz/pKWyz",
+        "isbn": "",
+        "autor": "",
+        "description": ""
+      },
+      {
+        "id": 104,
+        "type": "tool",
+        "name": "Prolézací tunel",
+        "price": 500,
+        "imgUrl": "/img/tools/prolezaciTunel.jpg",
+        "url": "https://1url.cz/EKWyu",
+        "isbn": "",
+        "autor": "",
+        "description": ""
+      }
+    ]
+  }
