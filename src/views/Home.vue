@@ -5,5 +5,3 @@
     <p>Nějaký info text?</p>
   </div>
 </template>
-
-
