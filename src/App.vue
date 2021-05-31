@@ -1,22 +1,60 @@
 <template>
   <div id="app" class="container">
-    <div class="row justify-content-md-center">
-      <div id="nav" class="fixed-top bg-light">
-        <router-link to="/">S knížkou do života</router-link>
-        <router-link to="/knihy">Knihy</router-link>
-        <router-link to="/pomucky">Pomůcky</router-link>
-        <router-link to="/nakupniKosik"
-          >Nákupní košík
-          <span v-show="sumPrice != 0">{{ sumPrice }}</span>
+<div>
+  <b-navbar fixed="top" toggleable="sm" type="light" variant="faded">
+
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+    <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav>
+        <router-link
+          to="/"
+          v-slot="{ href, route, navigate, isExactActive  }"
+          custom>
+          <li v-bind:class="{ 'nav-link': true }">
+            <a :href="href" v-bind:class="{ 'nav-link': true, 'active': isExactActive }" @click="navigate">S knížkou do života</a>
+          </li>
         </router-link>
-      </div>
+        <router-link
+          to="/knihy"
+          v-slot="{ href, route, navigate, isExactActive }"
+          custom>
+          <li class="nav-link">
+            <a :href="href" v-bind:class="{ 'nav-link': true, 'active': isExactActive }" @click="navigate">Knihy</a>
+          </li>
+        </router-link>
+        <router-link
+          to="/pomucky"
+          v-slot="{ href, route, navigate, isExactActive }"
+          custom>
+          <li v-bind:class="{ 'nav-link': true, 'router-link-exact-active': isExactActive }">
+            <a :href="href" v-bind:class="{ 'nav-link': true, 'active': isExactActive }" @click="navigate">Pomůcky</a>
+          </li>
+        </router-link>
+        <router-link
+          to="/nakupniKosik"
+          v-slot="{ href, route, navigate, isExactActive }"
+          custom>
+          <li v-bind:class="{ 'nav-link': true, 'router-link-exact-active': isExactActive }">
+            <a :href="href" v-bind:class="{ 'nav-link': true, 'active': isExactActive }" @click="navigate">Nákupní košík
+            <span v-show="sumPrice != 0"> ({{ sumPrice }}) </span>
+          </a>
+          </li>
+        </router-link>
+
+      </b-navbar-nav>
+
+    </b-collapse>
+  </b-navbar>
+</div>
+
       <router-view
         @add-to-basked="addToBasked($event)"
         @remove-from-basked="removeFromBasket($event)"
         @update-basked="updateBasked($event)"
       />
     </div>
-  </div>
+  
 </template>
 
 <script>
@@ -32,6 +70,7 @@ if (!localBasked) {
 export default {
   data() {
     return {
+      vueNotLoad: false,
       books: [],
       tools: [],
       basked: localBasked,
@@ -150,6 +189,12 @@ export default {
 </script>
 
 <style>
+.router-link-exact-active{
+  font-weight: 700;
+}
+
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -160,34 +205,38 @@ export default {
 .books,
 .tools,
 .basked{
-  margin-top: 140pt !important;
+  margin-top: 40pt !important;
 }
-#nav {
+nav {
   text-align: center;
-  min-width: 247px;
   padding: 0 !important;
-  /*background-color: white !important;*/
+  margin: 0;
+  background-color: #f49923c0 !important;
+  border-bottom: 1px #ffffff solid;
+}
+li.nav-link{
+  padding: 0pt;
+  color: #000000;
 }
 
-#nav a {
-  padding: 5pt;
-  margin: 2pt;
+nav a {
+  padding: 10pt;
+  margin-top: 5pt;
+  margin-bottom: 0pt;
   font-weight: bold;
-  color: #000;
+  color: #000 !important;
   text-decoration: none;
-  border-radius: 5px;
-  display: inline-block;
-  width: 160pt;
 }
 
-#nav a.router-link-exact-active {
-  background-color: rgba(244, 151, 12, 0.5);
+nav a.active {
+  background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
 }
-#nav a:hover {
-  -webkit-box-shadow: 0px 0px 6px 1px rgba(244, 152, 12, 1);
-  -moz-box-shadow: 0px 0px 6px 1px rgba(244, 152, 12, 1);
-  box-shadow: 0px 0px 6px 1px rgba(244, 152, 12, 1);
+nav a:hover {
+  background-color: rgb(255, 255, 255);
+  -webkit-box-shadow: 0px 0px 6px 1px rgb(255, 255, 255);
+  -moz-box-shadow: 0px 0px 6px 1px rgb(255, 255, 255);
+  box-shadow: 0px 0px 6px 1px rgb(255, 255, 255);
 }
 .items {
   font-size: 130%;
@@ -275,14 +324,6 @@ export default {
   .tools,
   .basked{
     margin-top: 70pt !important;
-  }
-}
-@media (max-width: 930px) and (min-width: 600px){
-  .home,
-  .books,
-  .tools,
-  .basked{
-    margin-top: 100pt !important;
   }
 }
 

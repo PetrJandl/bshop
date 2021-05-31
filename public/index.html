@@ -15,12 +15,50 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
+    <style>
+      .v-cloak { display:none; }
+      .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #F6C883;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+        margin: 0 auto;
+      }
+      .centerLoader {
+        width: 100%;
+      }
+      .centerLoader h2{
+        width: 121px;
+        font-family: arial;
+        margin: 50pt auto;
+      }
+      
+      /* Safari */
+      @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      </style>
+
   </head>
   <body> 
     <noscript>
       <strong>Omlouvame se ale tento web, neuze pracovat bez JavaScriptu.Prosim zapnete jej.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="app">
+      <div v-show="vueNotLoad" class="centerLoader">
+        <h2>Načítání ...</h2>
+        <div v-show="vueNotLoad" class="loader"></div>
+    </div>
+    </div>
     <!-- built files will be auto injected -->
   </body>
 </html>
