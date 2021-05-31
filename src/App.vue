@@ -1,60 +1,89 @@
 <template>
   <div id="app" class="container">
-<div>
-  <b-navbar fixed="top" toggleable="sm" type="light" variant="faded">
+    <div>
+      <b-navbar fixed="top" toggleable="sm" type="light" variant="faded">
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
-        <router-link
-          to="/"
-          v-slot="{ href, route, navigate, isExactActive  }"
-          custom>
-          <li v-bind:class="{ 'nav-link': true }">
-            <a :href="href" v-bind:class="{ 'nav-link': true, 'active': isExactActive }" @click="navigate">S knížkou do života</a>
-          </li>
-        </router-link>
-        <router-link
-          to="/knihy"
-          v-slot="{ href, route, navigate, isExactActive }"
-          custom>
-          <li class="nav-link">
-            <a :href="href" v-bind:class="{ 'nav-link': true, 'active': isExactActive }" @click="navigate">Knihy</a>
-          </li>
-        </router-link>
-        <router-link
-          to="/pomucky"
-          v-slot="{ href, route, navigate, isExactActive }"
-          custom>
-          <li v-bind:class="{ 'nav-link': true, 'router-link-exact-active': isExactActive }">
-            <a :href="href" v-bind:class="{ 'nav-link': true, 'active': isExactActive }" @click="navigate">Pomůcky</a>
-          </li>
-        </router-link>
-        <router-link
-          to="/nakupniKosik"
-          v-slot="{ href, route, navigate, isExactActive }"
-          custom>
-          <li v-bind:class="{ 'nav-link': true, 'router-link-exact-active': isExactActive }">
-            <a :href="href" v-bind:class="{ 'nav-link': true, 'active': isExactActive }" @click="navigate">Nákupní košík
-            <span v-show="sumPrice != 0"> ({{ sumPrice }}) </span>
-          </a>
-          </li>
-        </router-link>
-
-      </b-navbar-nav>
-
-    </b-collapse>
-  </b-navbar>
-</div>
-
-      <router-view
-        @add-to-basked="addToBasked($event)"
-        @remove-from-basked="removeFromBasket($event)"
-        @update-basked="updateBasked($event)"
-      />
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav>
+            <router-link
+              to="/"
+              v-slot="{ href, route, navigate, isExactActive }"
+              custom
+            >
+              <li v-bind:class="{ 'nav-link': true }">
+                <a
+                  :href="href"
+                  v-bind:class="{ 'nav-link': true, active: isExactActive }"
+                  @click="navigate"
+                  >S knížkou do života</a
+                >
+              </li>
+            </router-link>
+            <router-link
+              to="/knihy"
+              v-slot="{ href, route, navigate, isExactActive }"
+              custom
+            >
+              <li class="nav-link">
+                <a
+                  :href="href"
+                  v-bind:class="{ 'nav-link': true, active: isExactActive }"
+                  @click="navigate"
+                  >Knihy</a
+                >
+              </li>
+            </router-link>
+            <router-link
+              to="/pomucky"
+              v-slot="{ href, route, navigate, isExactActive }"
+              custom
+            >
+              <li
+                v-bind:class="{
+                  'nav-link': true,
+                  'router-link-exact-active': isExactActive,
+                }"
+              >
+                <a
+                  :href="href"
+                  v-bind:class="{ 'nav-link': true, active: isExactActive }"
+                  @click="navigate"
+                  >Pomůcky</a
+                >
+              </li>
+            </router-link>
+            <router-link
+              to="/nakupniKosik"
+              v-slot="{ href, route, navigate, isExactActive }"
+              custom
+            >
+              <li
+                v-bind:class="{
+                  'nav-link': true,
+                  'router-link-exact-active': isExactActive,
+                }"
+              >
+                <a
+                  :href="href"
+                  v-bind:class="{ 'nav-link': true, active: isExactActive }"
+                  @click="navigate"
+                  >Nákupní košík
+                  <span v-show="sumPrice != 0"> ({{ sumPrice }}) </span>
+                </a>
+              </li>
+            </router-link>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
     </div>
-  
+
+    <router-view
+      @add-to-basked="addToBasked($event)"
+      @remove-from-basked="removeFromBasket($event)"
+      @update-basked="updateBasked($event)"
+    />
+  </div>
 </template>
 
 <script>
@@ -189,11 +218,9 @@ export default {
 </script>
 
 <style>
-.router-link-exact-active{
+.router-link-exact-active {
   font-weight: 700;
 }
-
-
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -204,23 +231,23 @@ export default {
 .home,
 .books,
 .tools,
-.basked{
+.basked {
   margin-top: 40pt !important;
 }
 nav {
   text-align: center;
   padding: 0 !important;
   margin: 0;
-  background-color: #f49923c0 !important;
-  border-bottom: 1px #ffffff solid;
+  background-color: #f49923f9 !important;
+  /*border-bottom: 1px #ffffff solid;*/
 }
-li.nav-link{
+li.nav-link {
   padding: 0pt;
   color: #000000;
 }
 
 nav a {
-  padding: 10pt;
+  padding-right: 12pt 0 !important;
   margin-top: 5pt;
   margin-bottom: 0pt;
   font-weight: bold;
@@ -305,7 +332,7 @@ nav a:hover {
   font-weight: bold;
 }
 
-@media (min-width: 600px){
+@media (min-width: 600px) {
   #nav {
     padding: 20pt;
   }
@@ -317,14 +344,13 @@ nav a:hover {
   .items div.book:hover,
   .items div.tool:hover,
   .items div.baskedItem:hover {
-    background-color: rgba(244, 151, 12, 0.25);
+    background-color: rgba(244, 151, 12, 0.9);
   }
   .home,
   .books,
   .tools,
-  .basked{
+  .basked {
     margin-top: 70pt !important;
   }
 }
-
 </style>
