@@ -2,6 +2,28 @@
   <div id="app" class="container">
     <div>
       <b-navbar fixed="top" toggleable="sm" type="light" variant="faded">
+        <b-navbar-brand>
+          <router-link
+            to="/nakupniKosik"
+            v-slot="{ href, route, navigate, isExactActive }"
+            custom
+          >
+            <li class="nav-link d-block d-sm-none">
+              <a
+                :href="href"
+                v-bind:class="{ 'nav-link': true, active: isExactActive }"
+                @click="navigate"
+                :title="countPiece + ' ks za ' + sumPrice + 'Kč'"
+              >
+                <i class="fa" style="font-size: 24px">&#xf07a;</i>
+                <span class="badge badge-warning" id="lblCartCount">
+                  {{ countPiece }}
+                </span>
+              </a>
+            </li>
+          </router-link>
+        </b-navbar-brand>
+
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
@@ -60,7 +82,7 @@
             >
               <li
                 v-bind:class="{
-                  'nav-link': true,
+                  'nav-link d-none d-sm-block': true,
                   'router-link-exact-active': isExactActive,
                 }"
               >
@@ -68,8 +90,7 @@
                   :href="href"
                   v-bind:class="{ 'nav-link': true, active: isExactActive }"
                   @click="navigate"
-                  >Nákupní košík
-                  <span v-show="sumPrice != 0"> ({{ sumPrice }}) </span>
+                  >Košík ({{ sumPrice }}Kč)
                 </a>
               </li>
             </router-link>
@@ -107,6 +128,23 @@ export default {
     };
   },
   computed: {
+    countPiece: {
+      get: function () {
+        this.backdoor;
+        var sum = 0;
+        this.basked.forEach((item) => {
+          sum = sum + item.pieceInBasket;
+        });
+        return sum;
+      },
+      set: function (updateItem) {
+        this.basked.forEach((item) => {
+          if (item.id == updateItem.id) {
+            this.backdoor++;
+          }
+        });
+      },
+    },
     sumPrice: {
       get: function () {
         this.backdoor;
@@ -232,14 +270,14 @@ export default {
 .books,
 .tools,
 .basked {
-  margin-top: 40pt !important;
+  margin-top: 60pt !important;
 }
 nav {
   text-align: center;
   padding: 0 !important;
   margin: 0;
-  background-color: #f49923f9 !important;
-  /*border-bottom: 1px #ffffff solid;*/
+  background-color: #f49923fc !important;
+  border-bottom: 1px #000000 solid;
 }
 li.nav-link {
   padding: 0pt;
@@ -256,14 +294,11 @@ nav a {
 }
 
 nav a.active {
-  background-color: rgb(255, 255, 255);
+  background-color: #eee2d2fc;
   color: rgb(0, 0, 0);
 }
 nav a:hover {
   background-color: rgb(255, 255, 255);
-  -webkit-box-shadow: 0px 0px 6px 1px rgb(255, 255, 255);
-  -moz-box-shadow: 0px 0px 6px 1px rgb(255, 255, 255);
-  box-shadow: 0px 0px 6px 1px rgb(255, 255, 255);
 }
 .items {
   font-size: 130%;
@@ -315,10 +350,7 @@ nav a:hover {
 }
 .obalka,
 .nahledPomucky {
-  /*float: left;*/
   padding: 0 10pt 10pt 10pt;
-}
-.obalka {
   float: left;
 }
 .nahledPomucky {
@@ -330,6 +362,31 @@ nav a:hover {
 .price {
   text-align: right;
   font-weight: bold;
+}
+
+#lblCartCount {
+  font-size: 12px;
+  background: #ff0000;
+  color: #fff;
+  padding: 0 5px;
+  vertical-align: top;
+  margin-left: -10px;
+}
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+}
+
+.text-justify {
+  text-align: justify;
 }
 
 @media (min-width: 600px) {
@@ -344,7 +401,7 @@ nav a:hover {
   .items div.book:hover,
   .items div.tool:hover,
   .items div.baskedItem:hover {
-    background-color: rgba(244, 151, 12, 0.9);
+    background-color: rgba(244, 151, 12, 0.2);
   }
   .home,
   .books,

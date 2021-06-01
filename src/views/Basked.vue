@@ -9,10 +9,12 @@
         v-show="item.pieceInBasket > 0"
       >
         <div class="col-md-12">
-        <strong class="mt-4 mb-2">{{ item.name }} </strong>
+          <strong class="mt-4 mb-2">{{ item.name }} </strong>
         </div>
         <div class="row justify-content-end">
-          <div class="col-12 col-sm-3 col-md-2 text-right">{{ item.price }},- Kč</div>
+          <div class="col-12 col-sm-3 col-md-2 text-right">
+            {{ item.price }},- Kč
+          </div>
           <button
             @click="addOneToBasked(item)"
             type="button"
@@ -35,11 +37,9 @@
             -
           </button>
           <div class="col-6 col-sm-3 col-md-2 text-right">
-          {{ item.pieceInBasket * item.price }},- Kč
+            {{ item.pieceInBasket * item.price }},- Kč
           </div>
         </div>
-
-
       </div>
       <div class="sumary mt-5 border-top border-dark">
         Celkem v košíku zboží za

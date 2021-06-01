@@ -1,64 +1,85 @@
 <!DOCTYPE html>
 <html lang="cs_CZ">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>BookStart eShop</title>
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="<%= BASE_URL %>ico/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>ico/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>ico/favicon-16x16.png">
-    <link rel="manifest" href="<%= BASE_URL %>ico/site.webmanifest">
-    <link rel="mask-icon" href="<%= BASE_URL %>ico/safari-pinned-tab.svg" color="#000000">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
 
-    <style>
-      .v-cloak { display:none; }
-      .loader {
-        border: 16px solid #f3f3f3;
-        border-radius: 50%;
-        border-top: 16px solid #F6C883;
-        width: 120px;
-        height: 120px;
-        -webkit-animation: spin 2s linear infinite; /* Safari */
-        animation: spin 2s linear infinite;
-        margin: 0 auto;
-      }
-      .centerLoader {
-        width: 100%;
-      }
-      .centerLoader h2{
-        width: 121px;
-        font-family: arial;
-        margin: 50pt auto;
-      }
-      
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>BookStart eShop</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="<%= BASE_URL %>ico/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>ico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>ico/favicon-16x16.png">
+  <link rel="manifest" href="<%= BASE_URL %>ico/site.webmanifest">
+  <link rel="mask-icon" href="<%= BASE_URL %>ico/safari-pinned-tab.svg" color="#000000">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <style>
+    .v-cloak {
+      display: none;
+    }
+
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #F6C883;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite;
       /* Safari */
-      @-webkit-keyframes spin {
-        0% { -webkit-transform: rotate(0deg); }
-        100% { -webkit-transform: rotate(360deg); }
-      }
-      
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-      </style>
+      animation: spin 2s linear infinite;
+      margin: 0 auto;
+    }
 
-  </head>
-  <body> 
-    <noscript>
-      <strong>Omlouvame se ale tento web, neuze pracovat bez JavaScriptu.Prosim zapnete jej.</strong>
-    </noscript>
-    <div id="app">
-      <div v-show="vueNotLoad" class="centerLoader">
-        <h2>Načítání ...</h2>
-        <div v-show="vueNotLoad" class="loader"></div>
+    .centerLoader {
+      width: 100%;
+    }
+
+    .centerLoader strong {
+      width: 121px;
+      font-family: arial;
+      margin: 50pt auto;
+      display: block;
+      font-size: larger;
+    }
+
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <noscript>
+    <strong>Omlouvame se ale tento web, neuze pracovat bez JavaScriptu.Prosim zapnete jej.</strong>
+  </noscript>
+  <div id="app">
+    <div v-show="vueNotLoad" class="centerLoader">
+      <strong>Načítání ...</strong>
+      <div v-show="vueNotLoad" class="loader"></div>
     </div>
-    </div>
-    <!-- built files will be auto injected -->
-  </body>
+  </div>
+  <!-- built files will be auto injected -->
+</body>
+
 </html>
