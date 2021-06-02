@@ -15,7 +15,7 @@
                 @click="navigate"
                 :title="countPiece + ' ks za ' + sumPrice + 'Kč'"
               >
-                <i class="fa" style="font-size: 24px">&#xf07a;</i>
+                <i class="fa">&#xf07a;</i>
                 <span class="badge badge-warning" id="lblCartCount">
                   {{ countPiece }}
                 </span>
@@ -27,7 +27,7 @@
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav>
+          <b-navbar-nav class="offset-lg-1 offset-xl-2">
             <router-link
               to="/"
               v-slot="{ href, route, navigate, isExactActive }"
@@ -90,7 +90,10 @@
                   :href="href"
                   v-bind:class="{ 'nav-link': true, active: isExactActive }"
                   @click="navigate"
-                  >Košík ({{ sumPrice }}Kč)
+                  >Košík
+                  <span class="badge badge-warning bg-danger"
+                    >{{ sumPrice }}Kč</span
+                  >
                 </a>
               </li>
             </router-link>
@@ -103,6 +106,7 @@
       @add-to-basked="addToBasked($event)"
       @remove-from-basked="removeFromBasket($event)"
       @update-basked="updateBasked($event)"
+      class="offset-lg-1 offset-xl-2"
     />
   </div>
 </template>
@@ -236,6 +240,9 @@ export default {
 
       if (sum + $updateItem.price * $updateItem.pieceInBasket < maxPriceSum) {
         //console.log("OK - save local storage");
+        if ($updateItem.pieceInBasket == 0) {
+          this.basked.splice(this.basked.indexOf($updateItem), 1);
+        }
         localStorage.setItem("basked", JSON.stringify(this.basked));
       } else {
         this.basked[this.basked.indexOf($updateItem)].pieceInBasket =
@@ -276,7 +283,7 @@ nav {
   text-align: center;
   padding: 0 !important;
   margin: 0;
-  background-color: #f49923fc !important;
+  background-color: rgba(244, 151, 12, 0.95) !important;
   border-bottom: 1px #000000 solid;
 }
 li.nav-link {
@@ -294,7 +301,7 @@ nav a {
 }
 
 nav a.active {
-  background-color: #eee2d2fc;
+  background-color: rgba(244, 151, 12, 0.2);
   color: rgb(0, 0, 0);
 }
 nav a:hover {
@@ -348,11 +355,6 @@ nav a:hover {
   /*min-height: 200pt;*/
   /*min-width: 600px;*/
 }
-.obalka,
-.nahledPomucky {
-  padding: 0 10pt 10pt 10pt;
-  float: left;
-}
 .nahledPomucky {
   max-height: 200pt;
 }
@@ -361,7 +363,7 @@ nav a:hover {
 }
 .price {
   text-align: right;
-  font-weight: bold;
+  /*font-weight: bold;*/
 }
 
 #lblCartCount {
@@ -398,7 +400,7 @@ nav a:hover {
     margin: 5pt;
     width: 160pt;
   }
-  .items div.book:hover,
+  .items div.item:hover,
   .items div.tool:hover,
   .items div.baskedItem:hover {
     background-color: rgba(244, 151, 12, 0.2);
@@ -408,6 +410,20 @@ nav a:hover {
   .tools,
   .basked {
     margin-top: 70pt !important;
+  }
+}
+@media (max-width: 400px) {
+  .obalObalky {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+}
+@media (min-width: 400px) {
+  .obalka,
+  .nahledPomucky {
+    padding: 0 10pt 10pt 10pt;
+    float: left;
   }
 }
 </style>

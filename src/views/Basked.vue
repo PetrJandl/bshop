@@ -1,5 +1,5 @@
 <template>
-  <div class="basked">
+  <div class="basked col-12 col-sm-12 col-md-12 col-lg-10 col-xl-8">
     <h1>Nákupní košík</h1>
     <div class="items">
       <div
@@ -12,13 +12,15 @@
           <strong class="mt-4 mb-2">{{ item.name }} </strong>
         </div>
         <div class="row justify-content-end">
-          <div class="col-12 col-sm-3 col-md-2 text-right">
-            {{ item.price }},- Kč
+          <div class="col-12 col-sm-4 col-md-3 text-right">
+            {{ item.price }}{{ "\xa0" }}Kč<small
+              >{{ "\xa0" }}bez{{ "\xa0" }}DPH</small
+            >
           </div>
           <button
             @click="addOneToBasked(item)"
             type="button"
-            class="btn btn-sm btn-success col-1 col-sm-1"
+            class="btn btn-sm btn-success col-2 col-sm-1"
           >
             +
           </button>
@@ -28,22 +30,30 @@
             min="0"
             @change="updateBasked(item)"
             class="btn btn-default col-3 col-sm-2 col-md-1"
-          />
+          />ks{{ "\xa0" }}
           <button
             @click="removeOneFromBasked(item)"
             type="button"
-            class="btn btn-sm btn-danger col-1 col-sm-1"
+            class="btn btn-sm btn-danger col-2 col-sm-1"
           >
             -
           </button>
-          <div class="col-6 col-sm-3 col-md-2 text-right">
-            {{ item.pieceInBasket * item.price }},- Kč
+          <div class="col-12 col-sm-4 col-md-3 text-right">
+            <strong
+              >{{ item.pieceInBasket * item.price }}{{ "\xa0" }}Kč<small
+                >{{ "\xa0" }}bez{{ "\xa0" }}DPH</small
+              ></strong
+            >
           </div>
         </div>
       </div>
       <div class="sumary mt-5 border-top border-dark">
         Celkem v košíku zboží za
-        <strong class="price">{{ this.$parent.sumPrice }},- Kč</strong>
+        <strong class="price"
+          >{{ this.$parent.sumPrice }}{{ "\xa0" }}Kč<small
+            >{{ "\xa0" }}bez{{ "\xa0" }}DPH</small
+          ></strong
+        >
       </div>
     </div>
   </div>
