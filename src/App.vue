@@ -52,7 +52,7 @@
                   :href="href"
                   v-bind:class="{ 'nav-link': true, active: isExactActive }"
                   @click="navigate"
-                  >Knihy</a
+                  ><i class="fas fa-book"></i> Knihy</a
                 >
               </li>
             </router-link>
@@ -71,7 +71,7 @@
                   :href="href"
                   v-bind:class="{ 'nav-link': true, active: isExactActive }"
                   @click="navigate"
-                  >Pomůcky</a
+                  ><i class="far fa-life-ring"></i> Pomůcky</a
                 >
               </li>
             </router-link>
@@ -90,7 +90,7 @@
                   :href="href"
                   v-bind:class="{ 'nav-link': true, active: isExactActive }"
                   @click="navigate"
-                  >Košík
+                  ><i class="fa">&#xf07a;</i> Košík
                   <span class="badge badge-warning bg-danger"
                     >{{ sumPrice }}Kč</span
                   >
@@ -104,8 +104,8 @@
 
     <router-view
       @add-to-basked="addToBasked($event)"
-      @remove-from-basked="removeFromBasket($event)"
       @update-basked="updateBasked($event)"
+      @clean-basked="cleanBasket()"
       class="offset-lg-1 offset-xl-2"
     />
   </div>
@@ -143,7 +143,7 @@ export default {
       },
       set: function (updateItem) {
         this.basked.forEach((item) => {
-          if (item.id == updateItem.id) {
+          if (item.iditem == updateItem.iditem) {
             this.backdoor++;
           }
         });
@@ -161,7 +161,7 @@ export default {
       },
       set: function (updateItem) {
         this.basked.forEach((item) => {
-          if (item.id == updateItem.id) {
+          if (item.iditem == updateItem.iditem) {
             //item.pieceInBasket = item.pieceInBasket + updateItem.piece
             //console.log("setSumPrice:"+ item.pieceInBasket)
             this.backdoor++;
@@ -180,12 +180,12 @@ export default {
       axios
         .get("/data.json")
         .then((response) => {
-          response.data.items.forEach((item) => {
+          response.data.forEach((item) => {
             item.piece = 1;
-            if (item.type === "book") {
+            if (item.item_type_idtype === 1) {
               this.books.push(item);
             }
-            if (item.type === "tool") {
+            if (item.item_type_idtype === 2) {
               this.tools.push(item);
             }
           });
@@ -200,7 +200,7 @@ export default {
       if (this.sumPrice + $newItem.price * $newItem.piece < maxPriceSum) {
         var update = 0;
         this.basked.forEach((item) => {
-          if (item.id == $newItem.id) {
+          if (item.iditem == $newItem.iditem) {
             update = 1;
             //console.log(" id exist ")
           }
@@ -210,7 +210,7 @@ export default {
           this.basked.push($newItem);
         } else {
           this.basked.forEach((item) => {
-            if (item.id == $newItem.id) {
+            if (item.iditem == $newItem.iditem) {
               item.pieceInBasket = item.pieceInBasket + $newItem.piece;
               this.sumPrice = item;
             }
@@ -221,9 +221,9 @@ export default {
         alert("Celková částka objednávky nesmí překročit " + maxPriceSum);
       }
     },
-    removeFromBasket: function ($removeItem) {
+    cleanBasket: function () {
       //console.log($removeItem)
-      this.basked.splice(this.basked.indexOf($removeItem), 1);
+      this.basked = [];
       localStorage.setItem("basked", JSON.stringify(this.basked));
       this.backdoor--;
     },
@@ -232,11 +232,13 @@ export default {
       var maxPriceSum = 9500;
       var sum = 0;
       this.basked.forEach((item) => {
-        if (item.id != $updateItem.id) {
+        if (item.iditem != $updateItem.iditem) {
           sum = sum + item.price * item.pieceInBasket;
         }
       });
-      //console.log("x: "+(sum + ($updateItem.price*$updateItem.pieceInBasket)));
+      console.log(
+        "x: " + (sum + $updateItem.price * $updateItem.pieceInBasket)
+      );
 
       if (sum + $updateItem.price * $updateItem.pieceInBasket < maxPriceSum) {
         //console.log("OK - save local storage");
@@ -317,7 +319,6 @@ nav a:hover {
   /*min-height: 40pt;*/
 }
 .numAdd {
-  float: right;
   font-size: 90%;
 }
 .items input {
@@ -341,8 +342,7 @@ nav a:hover {
   max-width: 1044px;
 }
 
-.book,
-.tool,
+.item,
 .baskedItem {
   border-top: gray 1pt solid;
   padding-top: 5pt;
@@ -360,10 +360,6 @@ nav a:hover {
 }
 .sumary {
   text-align: right !important;
-}
-.price {
-  text-align: right;
-  /*font-weight: bold;*/
 }
 
 #lblCartCount {
@@ -390,6 +386,14 @@ nav a:hover {
 .text-justify {
   text-align: justify;
 }
+.previewCover {
+  display: block;
+  float: left;
+  width: 202px;
+}
+.previewCover img {
+  max-width: 100%;
+}
 
 @media (min-width: 600px) {
   #nav {
@@ -412,17 +416,26 @@ nav a:hover {
     margin-top: 70pt !important;
   }
 }
-@media (max-width: 400px) {
-  .obalObalky {
+@media (max-width: 575px) {
+  .previewCover {
     display: inline-block;
     width: 100%;
     text-align: center;
   }
+  #nav-collapse {
+    text-align: left !important;
+  }
+  #nav-collapse a.nav-link {
+    padding-left: 15pt;
+  }
+  #nav-collapse ul.navbar-nav li:first-child a {
+    padding-left: 28pt;
+  }
 }
-@media (min-width: 400px) {
-  .obalka,
-  .nahledPomucky {
-    padding: 0 10pt 10pt 10pt;
+@media (min-width: 575px) {
+  .cover,
+  .preview {
+    padding: 0 24pt 24pt 0pt;
     float: left;
   }
 }

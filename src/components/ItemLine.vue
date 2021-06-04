@@ -1,45 +1,66 @@
 <template>
-  <div class="item row mb-2 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-10">
-    <strong class="mt-3 mb-2">{{ item.name }}</strong>
-    <div class="text-justify col-12 col-sm-12 col-md-9 col-lg-10 col-xl-10">
-      <div class="obalObalky" v-if="item.isbn != ''">
+  <div class="item row mb-2">
+    <strong class="mt-3 mb-2">{{ item.item_name }}</strong>
+    <div class="text-justify">
+      <div class="previewCover">
         <a
+          v-if="item.item_type_idtype == 1 && item.isbn != ''"
           :href="'https://www.obalkyknih.cz/view?isbn=' + item.isbn"
           target="_blank"
         >
           <img
+            v-if="item.isbn != '' && item.imgUrl == null"
             :src="'https://www.obalkyknih.cz/api/cover?isbn=' + item.isbn"
             alt="obákla knihy"
-            class="obalka"
+            class="cover"
           />
-        </a>
-      </div>
-      <div v-if="item.isbn == '' && item.imgUrl != ''">
-        <a :href="item.url" target="_blank">
+          <!-- TODO
+            obalky knih musí být ve formátu
+            https://cache.obalkyknih.cz/file/cover/901302/medium
+            adresy smerujici na web nefungují při případném výpadku!!!
+            https://www.obalkyknih.cz/file/cover/2076601/medium
+          /-->
           <img
+            v-if="item.imgUrl != null"
             :src="item.imgUrl"
-            :alt="'ilustrační foto - ' + item.name"
-            class="nahledPomucky"
+            alt="obákla knihy"
+            class="cover"
           />
         </a>
+        <a
+          v-if="item.item_type_idtype == 2 && item.imgUrl != null"
+          :href="item.url"
+          target="_blank"
+        >
+          <img
+            :src="'/img/tools/' + item.imgUrl"
+            :alt="'ilustrační foto - ' + item.name"
+            class="preview"
+          />
+        </a>
+        <div v-if="item.item_type_idtype == 1" class="m-3">
+          <button
+            @click="addToBasked(item)"
+            type="button"
+            class="btn btn-success"
+          >
+            přidat do košíku
+          </button>
+          <div class="">
+            {{ item.price }}{{ "\xa0" }}Kč
+            <small>{{ "\xa0" }}bez{{ "\xa0" }}DPH</small>
+          </div>
+        </div>
       </div>
-      <span v-if="item.isbn != ''">
-        Lorem ipsum (zkráceně lipsum) je označení pro standardní pseudolatinský
-        text užívaný v grafickém designu a navrhování jako demonstrativní
-        výplňový text při vytváření pracovních ukázek grafických návrhů (např.
-        internetových stránek, rozvržení časopisů či všech druhů reklamních
-        materiálů). Lipsum tak pracovně znázorňuje text v ukázkových maketách
-        (tzv. mock-up) předtím, než bude do hotového návrhu vložen smysluplný
-        obsah.
+      <span v-if="item.item_type_idtype == 1 && item.description != null"
+        >{{ item.description }}
       </span>
-      <span v-if="item.isbn == ''">
+      <span v-if="item.item_type_idtype == 2 && item.description == null">
         <a :href="item.url" target="_blank"
           >Více informací na stránce prodejce</a
         >
       </span>
-    </div>
-    <div class="col-md-3 col-lg-2 col-xl-2 d-block">
-      <div class="numAdd m-3 mt-1">
+      <div v-if="item.item_type_idtype == 2" class="m-3">
         <button
           @click="addToBasked(item)"
           type="button"
@@ -47,7 +68,7 @@
         >
           přidat do košíku
         </button>
-        <div class="price">
+        <div class="">
           {{ item.price }}{{ "\xa0" }}Kč
           <small>{{ "\xa0" }}bez{{ "\xa0" }}DPH</small>
         </div>

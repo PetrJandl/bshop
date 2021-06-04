@@ -4,7 +4,7 @@
     <div class="items">
       <ItemLine
         v-for="tool in this.$parent.tools"
-        :key="tool.id"
+        :key="tool.iditem"
         :item="tool"
         @add-item-to-basked="addToolToBasked($event)"
       ></ItemLine>

@@ -1,72 +1,57 @@
-{
-    "items": [
-      {},
-      {
-        "id": 1,
-        "type": "book",
-        "name": "Montessori pro (ne)chápavé : 0-3 roky / Patricia Spinelli, Geneviève Carbone, Marilyne Maugin",
-        "price": 199,
-        "imgUrl": "",
-        "url": "https://kmhk.tritius.cz/detail/2358587",
-        "isbn": "978-80-256-2424-1",
-        "autor": "Geneviève Carbone",
-        "description": ""
-      },
-      {
-        "id": 2,
-        "type": "book",
-        "name": "Montessori pro (ne)chápavé : 3-6 let / Patricia Spinelli, Geneviève Carbone, Marilyne Maugin",
-        "price": 223,
-        "imgUrl": "",
-        "url": "https://kmhk.tritius.cz/detail/2373263",
-        "isbn": "978-80-256-2425-8",
-        "autor": "Geneviève Carbone",
-        "description": ""
-      },
-      {
-        "id": 3,
-        "type": "book",
-        "name": "60 Montessori aktivit pro miminko : jak připravit jeho svět, probouzet jeho zájem a pomáhat mu k samostatnosti",
-        "price": 299,
-        "imgUrl": "",
-        "url": "https://kmhk.tritius.cz/detail/2340971",
-        "isbn": "978-80-256-2125-7",
-        "autor": "Marie-Helene Place",
-        "description": ""
-      },
-      {
-        "id": 4,
-        "type": "book",
-        "name": "Rok plný učení zábavnou formou: 52 týdnů pedagogických aktivit v rodině",
-        "price": 399,
-        "imgUrl": "",
-        "url": "https://kmhk.tritius.cz/detail/2340971",
-        "isbn": "978-80-256-2039-7",
-        "autor": "Elsa Thiriot",
-        "description": ""
-      },
-
-      {
-        "id": 103,
-        "type": "tool",
-        "name": "Nášlapné kameny",
-        "price": 1200,
-        "imgUrl": "/img/tools/naslapneKameny.jpg",
-        "url": "https://1url.cz/pKWyz",
-        "isbn": "",
-        "autor": "",
-        "description": ""
-      },
-      {
-        "id": 104,
-        "type": "tool",
-        "name": "Prolézací tunel",
-        "price": 500,
-        "imgUrl": "/img/tools/prolezaciTunel.jpg",
-        "url": "https://1url.cz/EKWyu",
-        "isbn": "",
-        "autor": "",
-        "description": ""
-      }
-    ]
+[
+  {
+    "iditem": 1,
+    "item_type_idtype": 1,
+    "item_name": "Montessori pro (ne)ch\u00e1pav\u00e9 : 0-3 roky",
+    "item_autor": "Spinelli, Patricia",
+    "price": 199,
+    "description": "Kniha p\u0159in\u00e1\u0161\u00ed n\u00e1vrhy na \u010dinnosti, je\u017e m\u016f\u017eete d\u011blat s d\u00edt\u011btem. Jde v\u0161ak o v\u00edc ne\u017e jen o soupis aktivit, jeliko\u017e rodi\u010d zast\u00e1v\u00e1 p\u0159i vzd\u011bl\u00e1v\u00e1n\u00ed d\u00edt\u011bte nenahraditelnou \u00falohu, dalece p\u0159evy\u0161uj\u00edc\u00ed funkci u\u010ditele. V obdob\u00ed od narozen\u00ed do 3 let v\u011bku m\u00e1 ot\u00e1zka du\u0161evn\u00edho v\u00fdvoje velkou v\u00e1hu. Kniha chce vid\u011bt ve va\u0161em miminku bytost, jej\u00ed\u017e my\u0161len\u00ed se formuje, a zav\u00e9st konkr\u00e9tn\u00ed zp\u016fsoby, jak mu usnadnit rozvoj psychiky a potenci\u00e1lu. Nab\u00edz\u00ed zp\u016fsoby, jak p\u0159ipravit domov, prost\u0159ed\u00ed a materi\u00e1l. P\u0159in\u00e1\u0161\u00ed n\u00e1vod, jak d\u00edt\u011b co nejl\u00e9pe p\u0159iv\u00edtat na sv\u011bt\u011b a doprov\u00e1zet ho na cest\u011b v\u00fdvojem. P\u0159ich\u00e1z\u00ed s p\u0159\u00edklady uspo\u0159\u00e1d\u00e1n\u00ed, aktivit nebo zp\u016fsob\u016f, jak v\u011bci d\u011blat. C\u00edlem je pochopit, co a jak d\u00edt\u011bti nab\u00edzet, abyste se vyhnuli bezv\u00fdznamn\u00fdm \u010dinnostem.",
+    "isbn": "978-80-256-2424-1",
+    "imgUrl": "https:\/\/cache.obalkyknih.cz\/file\/cover\/2076601\/medium",
+    "url": "https:\/\/kmhk.tritius.cz\/detail\/2358587"
+  },
+  {
+    "iditem": 2,
+    "item_type_idtype": 1,
+    "item_name": "Montessori pro (ne)ch\u00e1pav\u00e9 (3-6 let)",
+    "item_autor": "Spinelli, Patricia",
+    "price": 223,
+    "description": "Objevte, co v\u0161e dok\u00e1\u017ee d\u00edt\u011b mezi 3. a 6. rokem samostatn\u011b utv\u00e1\u0159et. Aktivity v knize sleduj\u00ed 2 linie: vytv\u00e1\u0159en\u00ed prost\u0159ed\u00ed, kter\u00e9 bude ze soci\u00e1ln\u00edho a materi\u00e1ln\u00edho hlediska odpov\u00eddat d\u011btsk\u00fdm pot\u0159eb\u00e1m; a p\u0159\u00edprava inteligentn\u00edch a z\u00e1bavn\u00fdch aktivit, kter\u00e9 budou my\u0161len\u00ed a kreativitu d\u00edt\u011bte rozv\u00edjet. Kniha se zam\u011b\u0159uje na \u010das, kter\u00fd rodi\u010de sd\u00edl\u00ed s d\u011btmi. Co d\u011blat spole\u010dn\u011b ka\u017ed\u00fd den, po n\u00e1vratu ze \u0161kolky, odpoledne, o v\u00edkendech nebo na dovolen\u00fdch? Kdy\u017e d\u00edt\u011b chod\u00ed do \u0161kolky, st\u00e1vaj\u00ed se z rodinn\u00e9ho \u017eivota poklady, ze kter\u00fdch bude \u010derpat sebed\u016fv\u011bru. Navrhovan\u00fd p\u0159\u00edstup vede k tomu vid\u011bt v pohybuj\u00edc\u00edm se d\u00edt\u011bti mysl\u00edc\u00ed bytost, jej\u00ed\u017e akce slou\u017e\u00ed k procvi\u010dov\u00e1n\u00ed ruky i my\u0161len\u00ed.",
+    "isbn": "978-80-256-2425-8",
+    "imgUrl": "https:\/\/cache.obalkyknih.cz\/file\/cover\/2085204\/medium",
+    "url": "https:\/\/kmhk.tritius.cz\/detail\/2373263"
+  },
+  {
+    "iditem": 3,
+    "item_type_idtype": 1,
+    "item_name": "60 Montessori aktivit pro miminko : jak p\u0159ipravit jeho sv\u011bt, probouzet jeho z\u00e1jem a pom\u00e1hat mu k samostatnosti",
+    "item_autor": null,
+    "price": 299,
+    "description": null,
+    "isbn": "978-80-256-2125-7",
+    "imgUrl": null,
+    "url": "https:\/\/kmhk.tritius.cz\/detail\/2340971"
+  },
+  {
+    "iditem": 101,
+    "item_type_idtype": 2,
+    "item_name": "N\u00e1\u0161lapn\u00e9 kameny",
+    "item_autor": null,
+    "price": 1200,
+    "description": null,
+    "isbn": null,
+    "imgUrl": "naslapneKameny.jpg",
+    "url": "https:\/\/1url.cz\/pKWyz"
+  },
+  {
+    "iditem": 102,
+    "item_type_idtype": 2,
+    "item_name": "Prol\u00e9zac\u00ed tunel",
+    "item_autor": null,
+    "price": 500,
+    "description": null,
+    "isbn": null,
+    "imgUrl": "prolezaciTunel.jpg",
+    "url": "https:\/\/1url.cz\/EKWyu"
   }
+]

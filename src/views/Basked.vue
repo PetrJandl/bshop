@@ -5,11 +5,11 @@
       <div
         class="baskedItem row pb-1"
         v-for="item in this.$parent.basked"
-        :key="item.id"
+        :key="item.item_name"
         v-show="item.pieceInBasket > 0"
       >
         <div class="col-md-12">
-          <strong class="mt-4 mb-2">{{ item.name }} </strong>
+          <strong class="mt-4 mb-2">{{ item.item_name }} </strong>
         </div>
         <div class="row justify-content-end">
           <div class="col-12 col-sm-4 col-md-3 text-right">
@@ -55,6 +55,32 @@
           ></strong
         >
       </div>
+      <div class="row">
+        <button
+          v-show="this.$parent.sumPrice > 0"
+          @click="cleanBasked()"
+          type="button"
+          class="btn btn-sm btn-danger offset-sm-2 col-5 col-sm-4 offset-md-4 col-md-3 offset-lg-6 col-lg-2"
+        >
+          <i class="fas fa-minus-circle"></i> Vysypat košík
+        </button>
+
+        <router-link
+          to="/registrace"
+          v-slot="{ href, route, navigate }"
+          custom
+          v-show="this.$parent.sumPrice > 0"
+        >
+          <a
+            :href="href"
+            @click="navigate"
+            class="btn btn-sm text-white btn-success nav-link p-3 offset-1 offset-sm-1 col-6 col-sm-5 col-md-4 offset-lg-1 col-lg-3"
+          >
+            Pokračovat
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -62,8 +88,8 @@
 <script>
 export default {
   methods: {
-    removeFromBasked: function ($item) {
-      this.$emit("remove-from-basked", $item);
+    cleanBasked: function () {
+      this.$emit("clean-basked");
     },
     updateBasked: function ($item) {
       this.$emit("update-basked", $item);
